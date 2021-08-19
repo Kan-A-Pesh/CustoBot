@@ -26,8 +26,6 @@ client.on('message', (msg) => {
         .setFooter('CustoBot vALPHA');
 
         messages.getAll().then((messages) => {
-
-            console.log(r);
     
             messages.forEach(command => {
                 r.addField(command.username, command.message, false)
@@ -35,6 +33,16 @@ client.on('message', (msg) => {
     
             msg.channel.send({ embeds: [r] });
         });
+    }
+    if (msg.content === '!debug')
+    {
+        msg.reply(
+            "> 🍞 *Debugging info ...*\n"+
+            "\n**🔗 Channel Id:** "+msg.channelId+
+            "\n**🛡 Guild Id:** "+msg.guildId+
+            "\n**✉ Message Id:** "+msg.id+
+            "\n**📤 Sender Id:** "+msg.author.id
+            );
     }
 });
 
