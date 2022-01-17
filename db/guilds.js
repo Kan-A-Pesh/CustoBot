@@ -2,8 +2,8 @@ const Joi = require('joi');
 const db = require('./connection');
 
 const schema = Joi.object().keys({
-    guildId: Joi.string().alphanum().required(),
-    guildName: Joi.string().required(),
+    guildId: Joi.string().required(),
+    logChannel: Joi.string(),
     nodes: Joi.array(),
 });
 
@@ -12,18 +12,15 @@ const guilds = db.get('guilds');
 function getAll() {
     return guilds.find();
 }
-
-function addGuild() {
-    return guilds.find();
+function getById(id) {
+    return guilds.findOne({guildId: id});
 }
 
-function create(message) {
-    if (!message.username) message.username = 'Anonymous';
+function create(guild) {
 
-    const result = schema.validate(message);
+    const result = schema.validate(guild);
     if (result.error == null) {
-        message.created = new Date();
-        return messages.insert(message);
+        return guilds.insert(guild);
     } else {
         return Promise.reject(result.error);
     }

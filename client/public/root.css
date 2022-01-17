@@ -1,200 +1,203 @@
 :root {
-    /* HEX COLORS */
-    --lightgreen: #68D89B;
-    --darkgreen: #0B8A44;
-    --green: #4F9D69;
-  
-    --cyan: #177E89;
-    --blue: #08605F;
-  
-    --white: #fffaff;
-    --whitish: #efeff0;
-    --jet: #303036;
-    --grey: #1b1a1c;
-    --black: #050401;
-  
-    /* RGB COLORS */
-    --rgb-lightgreen: 104, 216, 155;
-    --rgb-darkgreen: 11, 138, 68;
-    --rgb-green: 79, 157, 105;
-  
-    --rgb-cyan: 23, 126, 137;
-    --rgb-blue: 8, 96, 95;
-  
-    --rgb-white: 255, 250, 255;
-    --rgb-whitish: 239, 239, 240;
-    --rgb-jet: 48, 48, 54;
-    --rgb-grey: 27, 26, 28;
-    --rgb-black: 5, 4, 1;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    font-weight: normal;
-  }
-  
-  html,
-  body {
-    min-height: 100%;
-    width: 100%;
-  }
-  
-  .font-serif {
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-weight: normal;
-  }
-  .font-light {
-    font-weight: lighter;
-  }
-  .font-bold {
-    font-weight: bold;
-  }
-  
-  .container {
+  /* HEX COLORS */
+  --lightgreen: #68D89B;
+  --darkgreen: #0B8A44;
+  --green: #4F9D69;
+
+  --cyan: #177E89;
+  --blue: #08605F;
+
+  --white: #fffaff;
+  --whitish: #efeff0;
+  --jet: #303036;
+  --grey: #1b1a1c;
+  --black: #050401;
+
+  /* RGB COLORS */
+  --rgb-lightgreen: 104, 216, 155;
+  --rgb-darkgreen: 11, 138, 68;
+  --rgb-green: 79, 157, 105;
+
+  --rgb-cyan: 23, 126, 137;
+  --rgb-blue: 8, 96, 95;
+
+  --rgb-white: 255, 250, 255;
+  --rgb-whitish: 239, 239, 240;
+  --rgb-jet: 48, 48, 54;
+  --rgb-grey: 27, 26, 28;
+  --rgb-black: 5, 4, 1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: normal;
+}
+
+html,
+body {
+  min-height: 100%;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.font-serif {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: normal;
+}
+.font-light {
+  font-weight: lighter;
+}
+.font-bold {
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+}
+.flex {
+  display: flex;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-column {
+  flex-direction: column;
+}
+.center {
+  justify-content: center;
+  align-items: center;
+}
+.grow-1 {
+  flex-grow: 1;
+}
+.scroll {
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+
+.w-100 {
+  width: 100%;
+}
+.h-100 {
+  height: 100%;
+}
+
+/* ===================================================== */
+/* ================== Navbar Section =================== */
+/* ===================================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1500;
+
+  width: 100%;
+  height: 55px;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  padding: 0 40px;
+  background: var(--white);
+  backdrop-filter: blur(5px);
+}
+.navbar-brand {
+  margin-right: auto;
+  height: 100%;
+}
+.navbar-buttons {
+  margin-left: auto;
+  padding: 5px;
+}
+.navbar-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0px 15px;
+  height: 45px;
+
+  cursor: pointer;
+}
+.navbar-button * {
+  font-size: 15px;
+  color: var(--grey);
+  transition: 0.5s;
+  letter-spacing: 3.5px;
+}
+.navbar-button:hover * {
+  color: var(--lightgreen);
+}
+.navbar-button.router-link-exact-active * {
+  color: var(--darkgreen);
+}
+#navbar-toggle {
+  position: absolute;
+  display: none;
+  height: 45px;
+  width: 45px;
+  margin: 5px;
+  right: 50px;
+}
+#navbar-toggle * {
+  position: absolute;
+  font-size: 40px;
+  transition: 0.2s;
+  opacity: 1;
+}
+#navbar-toggle.closed *:nth-child(2) {
+  opacity: 0;
+}
+#navbar-toggle:not(.closed) *:nth-child(1) {
+  opacity: 0;
+}
+
+@media screen and (max-width: 768px) {
+  #navbar-toggle {
     display: flex;
-  }
-  .flex {
-    display: flex;
-  }
-  .flex-row {
-    flex-direction: row;
-  }
-  .flex-column {
-    flex-direction: column;
-  }
-  .center {
-    justify-content: center;
-    align-items: center;
-  }
-  .grow-1 {
-    flex-grow: 1;
-  }
-  .scroll {
-    overflow: hidden;
-    overflow-y: auto;
-  }
-  
-  .text-left {
-    text-align: left;
-  }
-  .text-right {
-    text-align: right;
-  }
-  .text-center {
-    text-align: center;
-  }
-  
-  .w-100 {
-    width: 100%;
-  }
-  .h-100 {
-    height: 100%;
-  }
-  
-  /* ===================================================== */
-  /* ================== Navbar Section =================== */
-  /* ===================================================== */
-  
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1500;
-  
-    width: 100%;
-    height: 55px;
-  
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-  
-    padding: 0 40px;
-    background: var(--white);
-    backdrop-filter: blur(5px);
-  }
-  .navbar-brand {
-    margin-right: auto;
-    height: 100%;
   }
   .navbar-buttons {
-    margin-left: auto;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 55px;
+    max-height: 0px;
+    overflow: hidden;
+    padding: 0;
+    transition: 1s;
+    background: var(--white);
+  }
+  .navbar-buttons > * {
+    min-height: 45px;
+  }
+  .navbar-buttons.router-link-exact-active {
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 55px;
+    max-height: 300%;
+    overflow: hidden;
     padding: 5px;
   }
-  .navbar-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    padding: 0px 15px;
-    height: 45px;
-  
-    cursor: pointer;
-  }
-  .navbar-button * {
-    font-size: 15px;
-    color: var(--grey);
-    transition: 0.5s;
-    letter-spacing: 3.5px;
-  }
-  .navbar-button:hover * {
-    color: var(--lightgreen);
-  }
-  .navbar-button.router-link-exact-active * {
-    color: var(--darkgreen);
-  }
-  #navbar-toggle {
-    position: absolute;
-    display: none;
-    height: 45px;
-    width: 45px;
-    margin: 5px;
-    right: 50px;
-  }
-  #navbar-toggle * {
-    position: absolute;
-    font-size: 40px;
-    transition: 0.2s;
-    opacity: 1;
-  }
-  #navbar-toggle.closed *:nth-child(2) {
-    opacity: 0;
-  }
-  #navbar-toggle:not(.closed) *:nth-child(1) {
-    opacity: 0;
-  }
-  
-  @media screen and (max-width: 768px) {
-    #navbar-toggle {
-      display: flex;
-    }
-    .navbar-buttons {
-      flex-direction: column;
-      width: 100%;
-      position: absolute;
-      left: 0;
-      top: 55px;
-      max-height: 0px;
-      overflow: hidden;
-      padding: 0;
-      transition: 1s;
-      background: var(--white);
-    }
-    .navbar-buttons > * {
-      min-height: 45px;
-    }
-    .navbar-buttons.router-link-exact-active {
-      flex-direction: column;
-      width: 100%;
-      position: absolute;
-      left: 0;
-      top: 55px;
-      max-height: 300%;
-      overflow: hidden;
-      padding: 5px;
-    }
-  }
-  
+}

@@ -8,5 +8,9 @@ module.exports = {
   MONGODB_URI: process.env.MONGODB_URI,
   
   PORT: process.env.PORT,
-  BASE_URL: process.env.BASE_URL
+  BASE_URL: process.env.BASE_URL,
+
+  CLIENT_ID: process.env.CLIENT_ID,
+  CLIENT_SECRET: process.env.CLIENT_SECRET,
+  CLIENT_REDIRECT_URL: process.env.CLIENT_REDIRECT_URL
 };

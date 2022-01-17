@@ -1,6 +1,7 @@
 /* Invite link: https://discord.com/oauth2/authorize?client_id=877608150046502983&scope=bot&permissions=8 */
 const djs = require('discord.js');
-const messages = require('./../db/messages')
+const nodes = require('../db/nodes.js')
+const guilds = require('./../db/guilds')
 const env = require('./../config');
 
 const client = new djs.Client(
@@ -25,10 +26,10 @@ client.on('message', (msg) => {
         .setTimestamp(new Date())
         .setFooter('CustoBot vALPHA');
 
-        messages.getAll().then((messages) => {
+        nodes.getForGuild().then((nodes) => {
     
-            messages.forEach(command => {
-                r.addField(command.username, command.message, false)
+            nodes.forEach(command => {
+                r.addField(command.username, command.message + "\n", false)
             });
     
             msg.channel.send({ embeds: [r] });
@@ -51,6 +52,18 @@ client.on('interactionCreate', async interaction => {
   
     if (interaction.commandName === 'ping') {
         await interaction.reply('Pong!');
+    }
+});
+
+client.on('guildCreate', async guild => {
+    try {
+        guilds.create({
+            guildId: guild.id
+        });
+        console.log("CustoBot has joined the server!");
+    }
+    catch (err) {
+        console.log(err);
     }
 });
 

@@ -1,18 +1,11 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ul>
+      <li v-for="repository in repositories" v-bind:key="repository._id">
+        <a :href="repository.html_url" target="_blank">{{repository.name}}</a>
+      </li>
+    </ul>
+    <p v-if="repositories.length === 0">Whoa, such empty!</p>
   </div>
 </template>
-
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
-
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld,
-  },
-};
-</script>
